@@ -1,11 +1,11 @@
-import React, { useEffect, useRef } from 'react'
-import { useGLTF, useTexture } from '@react-three/drei'
+import React, { useEffect, useRef } from "react";
+import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
- function IPhone(props) {
-  const { nodes, materials } = useGLTF('/models/scene.glb')
+function IPhone(props) {
+  const { nodes, materials } = useGLTF("/models/scene.glb");
 
-  const texture = useTexture(props.item.img)
+  const texture = useTexture(props.item.img);
 
   useEffect(() => {
     Object.entries(materials).map((material) => {
@@ -136,7 +136,9 @@ import * as THREE from "three";
         geometry={nodes.xXDHkMplTIDAXLN.geometry}
         material={materials.pIJKfZsazmcpEiU}
         scale={0.01}
-      />
+      >
+        <meshStandardMaterial roughness={1} map={texture} />
+      </mesh>
       <mesh
         castShadow
         receiveShadow
@@ -243,9 +245,9 @@ import * as THREE from "three";
         scale={0.01}
       />
     </group>
-  )
+  );
 }
 
 export default IPhone;
 
-useGLTF.preload('/models/scene.glb')
+useGLTF.preload("/models/scene.glb");

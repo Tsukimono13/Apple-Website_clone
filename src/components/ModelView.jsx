@@ -3,6 +3,7 @@ import { Lights } from "./Lights";
 import { Suspense } from "react";
 import * as THREE from "three";
 import IPhone from "./IPhone";
+import { Loader } from "./Loader";
 export const ModelView = ({
   index,
   groupRef,
@@ -18,7 +19,7 @@ export const ModelView = ({
       id={gsapType}
       className={`absolute size-full ${index === 2 ? "-right-full" : ""}`}
     >
-      <ambientLight intensity={0.3} />
+      <ambientLight intensity={0.5} />
       <PerspectiveCamera makeDefault position={[0, 0, 4]} />
       <Lights />
       <OrbitControls
@@ -35,7 +36,7 @@ export const ModelView = ({
         name={`${index === 1} ?
         "small" : "large`}
       >
-        <Suspense fallback={<>Loading...</>}>
+        <Suspense fallback={<Loader />}>
           <IPhone
             item={item}
             size={size}
